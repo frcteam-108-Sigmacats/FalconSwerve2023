@@ -57,23 +57,22 @@ public class SwerveModule extends SubsystemBase {
 
     //turnMotor.configIntegratedSensorAbsoluteRange(AbsoluteSensorRange.Unsigned_0_to_360);
 
-    driveMotor.setNeutralMode(NeutralMode.Brake);
-    turnMotor.setNeutralMode(NeutralMode.Brake);
+    // driveMotor.setNeutralMode(NeutralMode.Brake);
+    // turnMotor.setNeutralMode(NeutralMode.Brake);
 
     // turnMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
     driveMotor.setInverted(driveMotorReversed);
     turnMotor.setInverted(turnMotorReversed);
 
-    //absoluteEnc = new DigitalInput(absoluteEncoderID);
 
     absoluteEncoder = new DutyCycleEncoder(absoluteEncoderID);
-    absoluteEncoder.setConnectedFrequencyThreshold(1);
     this.absoluteEncoderOffset = offset;
 
     absoluteEncoder.setDutyCycleRange(0, 1);
+    absoluteEncoder.setConnectedFrequencyThreshold(1);
     absoluteEncoder.setDistancePerRotation(360);
-    absoluteEncoder.setPositionOffset(offset / 360);
+    absoluteEncoder.setPositionOffset(0);
 
     turnMotor.config_kP(0, kP);
     turnMotor.config_kI(0, kI);
@@ -140,17 +139,17 @@ public class SwerveModule extends SubsystemBase {
     driveMotor.set(ControlMode.Velocity, velocity, DemandType.ArbitraryFeedForward, feedforward.calculate(desiredState.speedMetersPerSecond));
     long nearestDegree = Math.round(desiredState.angle.getDegrees());
 
-    double setTurnValue = (2048 / 360) * nearestDegree;
+    double setTurnValue = degreesToFalcons(nearestDegree, chassisConstants.turnMotorGearRat);
     double inputAngle = nearestDegree;
     double setPoint = setTurnValue * chassisConstants.turnMotorGearRat;
-    turnMotor.set(ControlMode.Position, getAbsTurnAngle().getDegrees());
+    turnMotor.set(ControlMode.Position, setTurnValue);
   }
   public SwerveModulePosition getPosition(){
-    return new SwerveModulePosition(driveMotor.getSelectedSensorPosition(), getAbsTurnAngle());
+    return new SwerveModulePosition(driveMotor.getSelectedSensorPosition(), getTurnAngle());
   }
-  public double getAbsAngle(){
-    return absoluteEncoder.getAbsolutePosition();
-  }
+  // public double getAbsAngle(){
+  //   return absoluteEncoder.getDistance();
+  // }
 
   public void stop(){
     driveMotor.set(ControlMode.Velocity, 0);

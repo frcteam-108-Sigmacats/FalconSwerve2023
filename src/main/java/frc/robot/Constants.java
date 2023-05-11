@@ -28,8 +28,8 @@ public final class Constants {
         public static double kV = (2.44 / 12);//Test and revise if need
         public static double kA = (0.27 / 12);//Test and revise if need
 
-        public static double driveMotorGearRat = (6.54 / 1);
-        public static double turnMotorGearRat = (11.8 / 1); 
+        public static double driveMotorGearRat = (10.29 / 1);
+        public static double turnMotorGearRat = (10.29 / 1); 
         public static final double wheelDiameter = Units.inchesToMeters(4);
         public static double circumference = wheelDiameter * Math.PI;
 
@@ -60,7 +60,7 @@ public final class Constants {
         public static final boolean isFrontLeftDriveMotorReverse = true;
         public static final boolean isFrontLeftTurnMotorReverse = true;
         public static final int fLeftAbsoluteEncoder = 0;
-        public static final double frontLAngle = Units.radiansToDegrees(0.024654);
+        public static final double frontLAngle = 0;
         public static final double frontLKP = 0.7;
         public static final double frontLKI = 0.0;
         public static final double frontLKD = 0.0;
@@ -72,7 +72,7 @@ public final class Constants {
         public static final boolean isFrontRightDriveMotorReverse = true;
         public static final boolean isFrontRightTurnMotorReverse = true;
         public static final int fRightAbsoluteEncoder = 1;
-        public static final double frontRAngle = Units.radiansToDegrees(0.172576);
+        public static final double frontRAngle = 0;
         public static final double frontRKP = 0.6;
         public static final double frontRKI = 0.0;
         public static final double frontRKD = 0.0;
@@ -82,8 +82,8 @@ public final class Constants {
         public static final int bRightTurnMotorPort = 6;
         public static final boolean isBackRightDriveMotorReverse = true;
         public static final boolean isBackRightTurnMotorReverse = true;
-        public static final int bRightAbsoluteEncoder = 2;
-        public static final double backRAngle = Units.radiansToDegrees(0.221884);
+        public static final int bRightAbsoluteEncoder = 3;
+        public static final double backRAngle = 0;
         public static final double backRKP = 0.7;
         public static final double backRKI = 0.0;
         public static final double backRKD = 0.0;
@@ -93,8 +93,8 @@ public final class Constants {
         public static final int bLeftTurnMotorPort = 8;
         public static final boolean isBackLeftDriveMotorReverse = true;
         public static final boolean isBackLeftTurnMotorReverse = true;
-        public static final int bLeftAbsoluteEncoder = 3;
-        public static final double backLAngle = Units.radiansToDegrees(0.073961);
+        public static final int bLeftAbsoluteEncoder = 2;
+        public static final double backLAngle = 0;
         public static final double backLKP = 0.6;
         public static final double backLKI = 0.0;
         public static final double backLKD = 0.0;

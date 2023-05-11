@@ -41,7 +41,7 @@ public class SwerveSubsystem extends SubsystemBase {
   private final SwerveModule backRight = new SwerveModule(chassisSetUp.bRightDriveMotorPort, chassisSetUp.isBackRightDriveMotorReverse, 
   chassisSetUp.bRightTurnMotorPort, chassisSetUp.isBackRightTurnMotorReverse, chassisSetUp.bRightAbsoluteEncoder, chassisSetUp.backRAngle, chassisSetUp.backRKP, chassisSetUp.backRKI, chassisSetUp.backRKD);
 
-  private WPI_Pigeon2 gyro = new WPI_Pigeon2(0);
+  private WPI_Pigeon2 gyro = new WPI_Pigeon2(1);
   SwerveDriveOdometry swerveOdometry = new SwerveDriveOdometry(chassisConstants.swerveKinematics, getYaw(), getModulePositions());
   private SwerveModuleState[] swerveModuleStates;
   //public static PhotonCamera tracker = new PhotonCamera("tracker");
@@ -81,7 +81,6 @@ public class SwerveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("BackL Angle: ", backLeft.getState().angle.getDegrees());
     SmartDashboard.putNumber("BackR Angle: ", backRight.getState().angle.getDegrees());
     SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
-    System.out.println("Front Left Angle: " + frontLeft.getAbsAngle());
 
   }
   public void stopModules(){
